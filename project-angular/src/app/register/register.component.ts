@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
-import { Router, Route, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { User } from '../beans/user';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
-
-  returnUrl: ActivatedRoute;
+export class RegisterComponent implements OnInit {
   userName: string;
   password: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+
+  returnUrl: ActivatedRoute;
 
   constructor(
     private loginService: LoginService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -25,20 +27,19 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  login() {
+  register() {
     let user: User = {
       id: null,
       userName: this.userName,
       password: this.password,
-      email: null,
-      firstName: null,
-      lastName: null,
-      role: null,
+      email: this.email,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      role: 1,
     }
-    this.loginService.login(user)
+    this.loginService.register(user)
       .subscribe((user) => {
-        // whatever is needed can be done here
-        // Just for testing
+        // do stuff here
       });
   }
 
