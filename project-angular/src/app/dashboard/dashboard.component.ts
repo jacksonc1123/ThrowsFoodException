@@ -12,12 +12,10 @@ export class DashboardComponent implements OnInit {
 
   @Input()
   branding: string;
-  
-  loginModal: boolean = false;
-  registerModal: boolean = false;
 
   currentUser: User;
   isLoggedIn: boolean;
+  admin: boolean = false;
 
   constructor(
     private loginService: LoginService,
@@ -27,27 +25,14 @@ export class DashboardComponent implements OnInit {
       if (loggedIn) {
         this.isLoggedIn = true;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (this.currentUser.role == 2) {
+          this.admin = true;
+        }
       }
     });
   }
 
   ngOnInit() {
   }
-
-  toggleLoginModal() {
-    this.loginModal = !this.loginModal;
-  }
-
-  toggleRegisterModal() {
-    this.registerModal = !this.registerModal;
-  }
-
-  profileView() {
-    this.router.navigate(['confirm-profile'])
-  }
-
-  // setUser() { // only run when signalled from login component 
-  //   this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  // }
-
+  
 }
