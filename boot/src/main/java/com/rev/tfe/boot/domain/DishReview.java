@@ -36,18 +36,19 @@ public class DishReview {
     private String submitted;
 	
 	@Autowired
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.MERGE)
 	@JoinColumn(name="USER_ID", nullable=false)
     private User user;
 	
 	@Autowired
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.MERGE)
 	@JoinColumn(name="DISH_ID", nullable=false)
     private Dish dish;
 	
 	public DishReview() {
 		super();
 	}
+	
 	public DishReview(String description, Integer rating, String submitted, User user, Dish dish) {
 		super();
 		this.description = description;
@@ -56,6 +57,8 @@ public class DishReview {
 		this.user = user;
 		this.dish = dish;
 	}
+
+	
 	public DishReview(Integer id, String description, Integer rating, String submitted, User user, Dish dish) {
 		super();
 		this.id = id;
@@ -104,6 +107,6 @@ public class DishReview {
 	@Override
 	public String toString() {
 		return "DishReview [id=" + id + ", description=" + description + ", rating=" + rating + ", submitted="
-				+ submitted + "]";
+				+ submitted + ", user=" + user + ", dish=" + dish + "]";
 	}    
 }
