@@ -24,12 +24,17 @@ public class DishController {
 	public List<Dish> findAll() {
 		return dService.findAllDish();
 	}
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public Dish findDishesById(@PathVariable int id) {
 		return dService.findDishById(id);
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(method=RequestMethod.POST)
+=======
+	@RequestMapping(value="/add", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+>>>>>>> bd49ad560b0398d5f81b5856a026c43830ce7183
 	public void addDish(@RequestBody Dish dish) {
 		dService.addDish(dish);
 	}
