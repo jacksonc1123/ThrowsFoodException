@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rev.tfe.boot.domain.Dish;
 import com.rev.tfe.boot.service.DishService;
 
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("/dish")
 public class DishController {
 	
 	@Autowired
 	private DishService dService;
+	
+	@RequestMapping(value="/add", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Dish addDish(@RequestBody Dish dish) {
+		System.out.println("inside dish adddish controller");
+		return dService.addDish(dish);
+	}
 	
 	@RequestMapping(method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Dish> findAll() {
@@ -30,12 +38,4 @@ public class DishController {
 		return dService.findDishById(id);
 	}
 	
-<<<<<<< HEAD
-	@RequestMapping(method=RequestMethod.POST)
-=======
-	@RequestMapping(value="/add", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
->>>>>>> bd49ad560b0398d5f81b5856a026c43830ce7183
-	public void addDish(@RequestBody Dish dish) {
-		dService.addDish(dish);
-	}
 }
