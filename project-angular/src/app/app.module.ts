@@ -28,6 +28,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MenuComponent } from './menu/menu.component';
 import { DishService } from './services/dish.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -55,9 +56,19 @@ import { ShoppingCartService } from './services/shopping-cart.service';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    ClarityModule.forRoot()
+    ClarityModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBuwAE1PjHnQVx0PNpTjIo_S7m9YRAPVvw'
+    })
   ],
-  providers: [LoginService, UserApiService, TicketService, TicketlineService, DishService, ShoppingCartService],
+  providers: [
+    LoginService, 
+    UserApiService, 
+    TicketService, 
+    TicketlineService, 
+    DishService, 
+    ShoppingCartService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
