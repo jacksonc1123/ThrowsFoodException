@@ -18,23 +18,27 @@ public class OverallReviewServiceImpl implements OverallReviewService {
 	@Autowired
 	private OverallReviewRepository orRepo;
 
+	@Override
 	public void addOverallReview(OverallReview or) {
 		// TODO Auto-generated method stub
 		orRepo.save(or);
 	}
 
+	@Override
 	public List<OverallReview> findAllOverallReviews() {
 		return orRepo.findAll();
 	}
 
+	@Override
 	public OverallReview findOverallReview(Integer orId) {
 		if (orId == null) return null;
 		return orRepo.getOne(orId);
 	}
 
-//	public OverallReview findOverallReviewByTicketId(Integer tickId) {
-//		return orRepo.findOverallReviewByTicketId(tickId);
-//	}
+	@Override
+	public OverallReview findOverallReviewByTicketId(Integer tickId) {
+		return orRepo.findOverallReviewByTicketTicketId(tickId);
+	}
 //
 //	public OverallReview findOverallReviewByUserId(Integer userId) {
 //		return orRepo.findOverallReviewByUserId(userId);
