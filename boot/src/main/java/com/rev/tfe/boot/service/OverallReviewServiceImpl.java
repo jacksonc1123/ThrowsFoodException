@@ -32,9 +32,9 @@ public class OverallReviewServiceImpl implements OverallReviewService {
 		return orRepo.getOne(orId);
 	}
 
-//	public OverallReview findOverallReviewByTicketId(Integer tickId) {
-//		return orRepo.findOverallReviewByTicketId(tickId);
-//	}
+	public OverallReview findOverallReviewByTicketId(Integer tickId) {
+		return orRepo.findOverallReviewByTicketId(tickId);
+	}
 //
 //	public OverallReview findOverallReviewByUserId(Integer userId) {
 //		return orRepo.findOverallReviewByUserId(userId);
