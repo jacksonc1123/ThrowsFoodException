@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit {
   dishName: string = '';
   dishDesc: string = '';
   dishPrice: number = 0;
+  numItems: number = 0;
 
   constructor(
     private dishService: DishService,
@@ -40,6 +41,9 @@ export class MenuComponent implements OnInit {
       }
     });
     this.getAllDishes();
+    this.shoppingCartService.numItems.subscribe((val) => {
+      this.numItems = val;
+    });
   }
 
   add(ticketLine){
@@ -78,7 +82,7 @@ export class MenuComponent implements OnInit {
       }    
       this.cartArr.push(ticketLine);
       localStorage.setItem("shoppingCart", JSON.stringify(this.cartArr));
-      this.shoppingCartService.numItems += ticketLine.quantity;
+      this.shoppingCartService.changeNumItems(ticketLine.quantity + this.numItems);
     }
     
   }
