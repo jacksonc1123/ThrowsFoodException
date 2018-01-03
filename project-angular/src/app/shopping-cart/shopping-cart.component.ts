@@ -70,7 +70,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   placeOrder() {
-    if(this.ticketLines){
+    if(this.ticketLines && this.ticketLines.length != 0){
       this.processATicket();
     }
   }

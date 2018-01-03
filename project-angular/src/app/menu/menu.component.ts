@@ -61,12 +61,10 @@ export class MenuComponent implements OnInit {
       price: this.dishPrice,
       description: this.dishDesc
     } 
-    console.log(aDish);
     this.dishService.addADish(aDish).subscribe(() => this.getAllDishes());
     this.dishName = "";
     this.dishPrice = 0;
     this.dishDesc = "";
-    console.log("after add dish service.")
   }
 
   addToCart(ticketLine){
@@ -80,6 +78,7 @@ export class MenuComponent implements OnInit {
       }    
       this.cartArr.push(ticketLine);
       localStorage.setItem("shoppingCart", JSON.stringify(this.cartArr));
+      this.shoppingCartService.numItems += ticketLine.quantity;
     }
     
   }
