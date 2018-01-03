@@ -41,6 +41,7 @@ export class MenuComponent implements OnInit {
       }
     });
     this.getAllDishes();
+    this.shoppingCartService.getNumItemsFromCart();
     this.shoppingCartService.numItems.subscribe((val) => {
       this.numItems = val;
     });
@@ -84,7 +85,6 @@ export class MenuComponent implements OnInit {
       localStorage.setItem("shoppingCart", JSON.stringify(this.cartArr));
       this.shoppingCartService.changeNumItems(ticketLine.quantity + this.numItems);
     }
-    
   }
 
   getAllDishes(){
