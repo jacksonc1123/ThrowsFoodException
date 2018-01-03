@@ -4,6 +4,7 @@ import { Dish } from '../beans/dish';
 import { TicketLine } from '../beans/ticketline';
 import { forEach } from '@angular/router/src/utils/collection';
 import { LoginService } from '../services/login.service';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
   selector: 'app-menu',
@@ -24,7 +25,8 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private dishService: DishService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private shoppingCartService: ShoppingCartService
   ) {
   }
 
@@ -71,6 +73,11 @@ export class MenuComponent implements OnInit {
     if(!this.cartArr.includes(ticketLine)){
       console.log("inside addtocart check");
       console.log(ticketLine);
+      if (localStorage.getItem('shoppingCart')) {
+        this.cartArr = JSON.parse(localStorage.getItem('shoppingCart'));
+      } else {
+        this.cartArr = [];
+      }    
       this.cartArr.push(ticketLine);
       localStorage.setItem("shoppingCart", JSON.stringify(this.cartArr));
     }
