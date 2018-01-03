@@ -7,7 +7,7 @@ import com.rev.tfe.boot.domain.OverallReview;
 
 @Repository
 public interface OverallReviewRepository extends JpaRepository<OverallReview, Integer> {
-	public OverallReview findOverallReviewByTicketId(Integer tickId);
+	public OverallReview findOverallReviewByTicketTicketId(Integer tickId);
 //	public OverallReview findOverallReviewByUserId(Integer userId);
 //	public OverallReview findOverallReviewByUser(User u);
 }
