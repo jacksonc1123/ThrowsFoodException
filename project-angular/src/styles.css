@@ -3,6 +3,26 @@ a, button {
     outline: 0;
  }
 
+ .clr-vertical-nav {
+    background-color: #0b3c49;
+ }
+ .clr-vertical-nav .nav-link {
+     color: #fdfffc;
+ }
+ .clr-vertical-nav .nav-group-content .nav-group-text {
+    color: #fdfffc;
+ }
+ .clr-vertical-nav .nav-group-content .nav-link:hover {
+     border: none;
+    background-color: #111111;
+ }
+
+ .clr-vertical-nav .nav-link:hover, .clr-vertical-nav .nav-link.active {
+    border: none;
+    color: #fff;
+    background-color: #111111; }
+    clr-vertical-nav .nav-link:hover .nav-icon, .clr-vertical-nav .nav-link.active .nav-icon {
+      fill: #007cbb; }
 a:hover {
     cursor:pointer;
 }
