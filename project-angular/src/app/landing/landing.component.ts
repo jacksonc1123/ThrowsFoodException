@@ -40,8 +40,6 @@ export class LandingComponent implements OnInit {
       this.lng = this.location.results[0].geometry.location.lng;
       // console.log(this.location.results[0].geometry.location);
     });
-
-    let src = 'AIzaSyBuwAE1PjHnQVx0PNpTjIo_S7m9YRAPVvw';
   }
 
 }
