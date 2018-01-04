@@ -4,6 +4,7 @@ import { Dish } from '../beans/dish';
 import { TicketLine } from '../beans/ticketline';
 import { forEach } from '@angular/router/src/utils/collection';
 import { LoginService } from '../services/login.service';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
   selector: 'app-menu',
@@ -21,10 +22,12 @@ export class MenuComponent implements OnInit {
   dishName: string = '';
   dishDesc: string = '';
   dishPrice: number = 0;
+  numItems: number = 0;
 
   constructor(
     private dishService: DishService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private shoppingCartService: ShoppingCartService
   ) {
   }
 
@@ -38,6 +41,10 @@ export class MenuComponent implements OnInit {
       }
     });
     this.getAllDishes();
+    this.shoppingCartService.getNumItemsFromCart();
+    this.shoppingCartService.numItems.subscribe((val) => {
+      this.numItems = val;
+    });
   }
 
   add(ticketLine){
@@ -59,19 +66,25 @@ export class MenuComponent implements OnInit {
       price: this.dishPrice,
       description: this.dishDesc
     } 
-    console.log(aDish);
     this.dishService.addADish(aDish).subscribe(() => this.getAllDishes());
-    console.log("after add dish service.")
+    this.dishName = "";
+    this.dishPrice = 0;
+    this.dishDesc = "";
   }
 
   addToCart(ticketLine){
     if(!this.cartArr.includes(ticketLine)){
       console.log("inside addtocart check");
       console.log(ticketLine);
+      if (localStorage.getItem('shoppingCart')) {
+        this.cartArr = JSON.parse(localStorage.getItem('shoppingCart'));
+      } else {
+        this.cartArr = [];
+      }    
       this.cartArr.push(ticketLine);
       localStorage.setItem("shoppingCart", JSON.stringify(this.cartArr));
+      this.shoppingCartService.changeNumItems(ticketLine.quantity + this.numItems);
     }
-    
   }
 
   getAllDishes(){

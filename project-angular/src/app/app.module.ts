@@ -27,7 +27,7 @@ import { TicketlineService } from './services/ticketline.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MenuComponent } from './menu/menu.component';
 import { DishService } from './services/dish.service';
-import { DishReviewService} from './services/dishreview.service';
+import { DishreviewService} from './services/dishreview.service';
 import { ReviewComponent } from './review/review.component';
 
 
@@ -57,9 +57,23 @@ import { ReviewComponent } from './review/review.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    ClarityModule.forRoot()
+    ClarityModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBuwAE1PjHnQVx0PNpTjIo_S7m9YRAPVvw'
+    })
   ],
+  providers: [
+    LoginService, 
+    UserApiService, 
+    TicketService, 
+    TicketlineService, 
+    DishService, 
+    ShoppingCartService
+  ],
+<<<<<<< HEAD
   providers: [LoginService, UserApiService, TicketService, TicketlineService, DishService, DishReviewService],
+=======
+>>>>>>> c7d6d1d1b47907fc0c3666e0590191b4dd139b62
   bootstrap: [AppComponent]
 })
 export class AppModule {}

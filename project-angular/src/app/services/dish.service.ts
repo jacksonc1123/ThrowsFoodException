@@ -20,9 +20,6 @@ export class DishService {
   }
 
   addADish(dish: Dish){
-    console.log("inside adddish service");
-    console.log(dish);
-    console.log(apiUrl);
     return this.http.post<Dish>(`${apiUrl}/add`, dish, httpOptions);
 
   }

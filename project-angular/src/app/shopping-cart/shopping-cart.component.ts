@@ -70,7 +70,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   placeOrder() {
-    if(this.ticketLines){
+    if(this.ticketLines && this.ticketLines.length != 0){
       this.processATicket();
     }
   }
@@ -87,7 +87,7 @@ export class ShoppingCartComponent implements OnInit {
         this.processATicketline();
         window.alert("Thank You! Your Order Has Been Successfully Completed!");
         this.reset();
-        this.router.navigate(['menu']);
+        this.router.navigate(['order-history']);
       }
     });
   }
