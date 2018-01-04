@@ -38,4 +38,8 @@ public class DishController {
 		return dService.findDishById(id);
 	}
 	
+	@RequestMapping(value="/menu/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public Dish findAllDishesByMenuId(@PathVariable int menuId) {
+		return dService.findDishById(menuId);
+	}
 }
