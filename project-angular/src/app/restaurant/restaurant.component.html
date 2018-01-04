@@ -1,3 +1,9 @@
-<p>
-  restaurant works!
-</p>
+<div class="row">
+  <div *ngFor="let menu of menus" class="col-xs-4">
+    <a class="card clickable" (click)="loadRestaurant(menu)">
+      <div class="card-block">
+        <h3>{{ menu.name }}</h3>
+      </div>
+    </a>
+  </div>
+</div>

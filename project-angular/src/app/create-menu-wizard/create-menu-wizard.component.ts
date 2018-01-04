@@ -3,6 +3,7 @@ import { Wizard } from 'clarity-angular';
 import { Menu } from '../beans/menu';
 import { MenuApiService } from '../services/menu-api.service';
 import { User } from '../beans/user';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-create-menu-wizard',
@@ -23,7 +24,8 @@ export class CreateMenuWizardComponent implements OnInit {
   adminUser: User;
 
   constructor(
-    private menuApiService: MenuApiService
+    private menuApiService: MenuApiService,
+    private menuService: MenuService
   ) { }
 
   ngOnInit() {
@@ -39,8 +41,9 @@ export class CreateMenuWizardComponent implements OnInit {
     this.adminUser = JSON.parse(localStorage.getItem('currentUser'));
     if (this.adminUser.role == 2) {
       this.menuInfo.admin = this.adminUser;
-      this.menuApiService.addMenu(this.menuInfo).subscribe(() => {
-        
+      this.menuApiService.addMenu(this.menuInfo).subscribe((menu) => {
+        localStorage.setItem('menu', JSON.stringify(menu));
+        this.menuService.changeMenu(menu);
       });
     }
   }

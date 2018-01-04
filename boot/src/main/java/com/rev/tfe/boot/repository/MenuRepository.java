@@ -7,5 +7,5 @@ import com.rev.tfe.boot.domain.Menu;
 
 @Repository
 public interface MenuRepository extends JpaRepository<Menu, Integer> {
-	Menu findAllById(Integer userId);
+	Menu findAllByAdminId(Integer userId);
 }

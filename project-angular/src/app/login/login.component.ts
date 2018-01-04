@@ -9,6 +9,8 @@ import {
   FormBuilder
 } from '@angular/forms';
 import { environment } from '../../environments/environment.prod';
+import { MenuApiService } from '../services/menu-api.service';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-login',
@@ -35,6 +37,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private route: ActivatedRoute,
+    private menuApiService: MenuApiService,
+    private menuService: MenuService,
     private router: Router
   ) { }
 
@@ -87,6 +91,13 @@ export class LoginComponent implements OnInit {
         else {
           this.invalid = false;
           this.closeModal();
+          if (user.role == 2) {
+            this.menuApiService.getMenuByUserId(user.id).subscribe((menu) => {
+              console.log(menu);
+              localStorage.setItem('menu', JSON.stringify(menu));
+              this.menuService.changeMenu(menu);
+            });
+          }
         }
       });
   }

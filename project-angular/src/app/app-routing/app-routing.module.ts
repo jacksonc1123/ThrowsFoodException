@@ -9,6 +9,7 @@ import { OrderDetailComponent } from '../order-detail/order-detail.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { LandingComponent } from '../landing/landing.component';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+import { RestaurantComponent } from '../restaurant/restaurant.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'update-profile', component: UpdateProfileComponent, canActivate: [AuthGuard] },
   { path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard] },
   { path: 'menu', component: MenuComponent },
-  { path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuard] }
+  { path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
+  { path: 'restaurants', component: RestaurantComponent }
 ]
 
 @NgModule({

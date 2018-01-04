@@ -2,6 +2,8 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { User } from '../beans/user';
 import { Router } from '@angular/router';
+import { Menu } from '../beans/menu';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,10 +17,11 @@ export class DashboardComponent implements OnInit {
   currentUser: User;
   isLoggedIn: boolean;
   admin: boolean = false;
-  menu: number;
+  menu: Menu;
 
   constructor(
     private loginService: LoginService,
+    private menuService: MenuService,
     private router: Router
   ) {
     this.loginService.isLoggedIn().subscribe((loggedIn) => {
@@ -30,9 +33,21 @@ export class DashboardComponent implements OnInit {
         }
       }
     });
+
+    this.menuService.currentMenu.subscribe((currentMenu) => {
+      if (currentMenu) {
+        this.menu = currentMenu;
+        this.branding = currentMenu.name;
+      }
+    });
+
+    if (localStorage.getItem('menu')) {
+      this.menu = JSON.parse(localStorage.getItem('menu'));
+      this.branding = this.menu.name;
+    }
   }
 
   ngOnInit() {
   }
-  
+
 }

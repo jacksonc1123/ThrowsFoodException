@@ -33,6 +33,6 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public Menu findMenuByAdminId(Integer adminId) {
-		return menuRepo.findAllById(adminId);
+		return menuRepo.findAllByAdminId(adminId);
 	}
 }
