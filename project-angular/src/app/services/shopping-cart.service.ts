@@ -7,7 +7,7 @@ import { TicketLine } from '../beans/ticketline';
 export class ShoppingCartService {
 
   items: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  numItems = this.items.asObservable();
+  numItems: Observable<number> = this.items.asObservable();
   ticketLines: TicketLine[];
   totalDishes: number = 0;
 

@@ -30,6 +30,9 @@ import { DishService } from './services/dish.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { AgmCoreModule } from '@agm/core';
 import { RestaurantComponent } from './restaurant/restaurant.component';
+import { MenuService } from './services/menu.service';
+import { CreateMenuWizardComponent } from './create-menu-wizard/create-menu-wizard.component';
+import { MenuApiService } from './services/menu-api.service';
 
 
 @NgModule({
@@ -50,6 +53,7 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
     ShoppingCartComponent,
     MenuComponent,
     RestaurantComponent,
+    CreateMenuWizardComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,9 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
     TicketService, 
     TicketlineService, 
     DishService, 
-    ShoppingCartService
+    ShoppingCartService,
+    MenuService,
+    MenuApiService
   ],
   bootstrap: [AppComponent]
 })

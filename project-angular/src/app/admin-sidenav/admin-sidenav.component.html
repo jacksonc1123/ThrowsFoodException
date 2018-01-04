@@ -1,2 +1,6 @@
 <a clrVerticalNavLink (click)="profileView()" routerLinkActive="active">Update Profile</a>
+<a clrVerticalNavLink (click)="toggleCreateMenu()">Create Menu</a>
 <a clrVerticalNavLink (click)="logout()">Logout</a>
+
+<app-create-menu-wizard [createMenuWizard]="createMenuWizard" 
+(menuWizardEmitter)="toggleCreateMenu()"></app-create-menu-wizard>

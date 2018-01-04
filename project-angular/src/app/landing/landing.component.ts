@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-landing',
@@ -8,7 +9,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LandingComponent implements OnInit {
 
-  @Input()
   menu: number;
 
   aboutUs: string = `We've been in the pizza making game for years. No other pizza parlor can compare to us. Come on down and see for yourself,
@@ -30,7 +30,8 @@ export class LandingComponent implements OnInit {
   lng;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private m: MenuService
   ) { }
 
   ngOnInit() {
@@ -42,6 +43,10 @@ export class LandingComponent implements OnInit {
       this.lat = this.location.results[0].geometry.location.lat;
       this.lng = this.location.results[0].geometry.location.lng;
       // console.log(this.location.results[0].geometry.location);
+    });
+
+    this.m.currentMenu.subscribe((currentMenu) => {
+      this.menu = currentMenu;
     });
   }
 

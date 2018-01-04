@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { User } from '../beans/user';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import { Wizard } from 'clarity-angular';
 
 @Component({
   selector: 'app-admin-sidenav',
@@ -13,6 +14,8 @@ export class AdminSidenavComponent implements OnInit {
   @Input()
   currentUser: User;
 
+  createMenuWizard: boolean = false;
+
   constructor(
     private loginService: LoginService,
     private router: Router
@@ -23,6 +26,10 @@ export class AdminSidenavComponent implements OnInit {
 
   profileView() {
     this.router.navigate(['confirm-profile']);
+  }
+
+  toggleCreateMenu() {
+    this.createMenuWizard = !this.createMenuWizard;
   }
 
   logout() {
