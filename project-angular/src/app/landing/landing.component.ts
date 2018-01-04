@@ -45,9 +45,11 @@ export class LandingComponent implements OnInit {
       // console.log(this.location.results[0].geometry.location);
     });
 
-    this.m.currentMenu.subscribe((currentMenu) => {
-      this.menu = currentMenu;
-    });
+    if (this.m.currentMenu) {
+      this.m.currentMenu.subscribe((currentMenu) => {
+        this.menu = currentMenu;
+      });
+    }
   }
 
 }

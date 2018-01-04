@@ -17,18 +17,18 @@ export class MenuApiService {
   ) { }
 
   addMenu(menu: Menu) {
-    this.http.post<Menu>(`${apiUrl}/add`,menu, httpOptions);
+    return this.http.post<Menu>(`${apiUrl}/add`,menu, httpOptions);
   }
 
   getAllMenus() {
-    this.http.get<Menu[]>(`${apiUrl}`);
+    return this.http.get<Menu[]>(`${apiUrl}`);
   }
 
   getMenuByUserId(id: number) {
-    this.http.get<Menu>(`${apiUrl}/admin/${id}`);
+    return this.http.get<Menu>(`${apiUrl}/admin/${id}`);
   }
 
   getMenuByMenuId(id: number) {
-    this.http.get<Menu>(`${apiUrl}/${id}`);
+    return this.http.get<Menu>(`${apiUrl}/${id}`);
   }
 }

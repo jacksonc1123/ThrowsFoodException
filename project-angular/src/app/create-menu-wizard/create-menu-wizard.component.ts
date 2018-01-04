@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { Wizard } from 'clarity-angular';
 import { Menu } from '../beans/menu';
+import { MenuApiService } from '../services/menu-api.service';
+import { User } from '../beans/user';
 
 @Component({
   selector: 'app-create-menu-wizard',
@@ -18,10 +20,14 @@ export class CreateMenuWizardComponent implements OnInit {
   menuWizardEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   menuInfo: Menu = new Menu();
+  adminUser: User;
 
-  constructor() { }
+  constructor(
+    private menuApiService: MenuApiService
+  ) { }
 
   ngOnInit() {
+
   }
 
   unShow() {
@@ -29,7 +35,14 @@ export class CreateMenuWizardComponent implements OnInit {
   }
 
   createMenu() {
-    
+    console.log("here");
+    this.adminUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (this.adminUser.role == 2) {
+      this.menuInfo.admin = this.adminUser;
+      this.menuApiService.addMenu(this.menuInfo).subscribe(() => {
+        
+      });
+    }
   }
 
 }
