@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 })
 export class GeneralSidenavComponent implements OnInit {
 
+  @Input()
+  menu: number;
+  
   numItems: number = 0;
 
   constructor(

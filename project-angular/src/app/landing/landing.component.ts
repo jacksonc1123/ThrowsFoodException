@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -7,6 +7,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
+
+  @Input()
+  menu: number;
 
   aboutUs: string = `We've been in the pizza making game for years. No other pizza parlor can compare to us. Come on down and see for yourself,
   the marvels of the Pizza Joint.`

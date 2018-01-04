@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  branding: string = 'Pizza Joint';
+  branding: string = 'EagReats';
 
   currentUser: User;
   isLoggedIn: boolean;
   admin: boolean = false;
+  menu: number;
 
   constructor(
     private loginService: LoginService,

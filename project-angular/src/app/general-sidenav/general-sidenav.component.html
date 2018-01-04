@@ -1,2 +1,2 @@
-<a clrVerticalNavLink (click)="shoppingCartView()">
+<a *ngIf="menu" clrVerticalNavLink (click)="shoppingCartView()">
     <clr-icon shape="shopping-cart" clrVerticalNavIcon></clr-icon> Checkout <span *ngIf="(numItems > 0) && (router.url !== '/shopping-cart')" class="badge badge-5">{{numItems}}</span></a>

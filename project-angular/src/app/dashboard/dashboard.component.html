@@ -10,7 +10,8 @@
         <a class="nav-link" routerLinkActive="active" routerLink="/landing">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/menu">Menu</a>
+        <a *ngIf="menu" class="nav-link" routerLinkActive="active" routerLink="/menu">Menu</a>
+        <a *ngIf="!menu" class="nav-link" routerLinkActive="active" routerLink="/menu">Restaurants</a>
       </li>
     </ul>
   </nav>
@@ -29,7 +30,7 @@
     <clr-vertical-nav [clrVerticalNavCollapsible]="false" [(clrVerticalNavCollapsed)]="collapsed">
       <app-admin-sidenav *ngIf="isLoggedIn && admin" [currentUser]="currentUser"></app-admin-sidenav>
       <app-cust-sidenav *ngIf="isLoggedIn && !admin" [currentUser]="currentUser"></app-cust-sidenav>
-      <app-general-sidenav *ngIf="!admin"></app-general-sidenav>
+      <app-general-sidenav *ngIf="!admin" [menu]="menu"></app-general-sidenav>
       <app-anon-sidenav *ngIf="!isLoggedIn" [currentUser]="currentUser"></app-anon-sidenav>
     </clr-vertical-nav>
   </div>

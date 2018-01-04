@@ -29,6 +29,7 @@ import { MenuComponent } from './menu/menu.component';
 import { DishService } from './services/dish.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { AgmCoreModule } from '@agm/core';
+import { RestaurantComponent } from './restaurant/restaurant.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { AgmCoreModule } from '@agm/core';
     GeneralSidenavComponent,
     ShoppingCartComponent,
     MenuComponent,
+    RestaurantComponent,
   ],
   imports: [
     BrowserModule,
