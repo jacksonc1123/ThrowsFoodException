@@ -8,4 +8,5 @@ public interface DishService {
 	public Dish addDish(Dish dish);
 	public Dish findDishById(Integer id);
 	public List<Dish> findAllDish();
+	public List<Dish> findAllDishByMenuId(Integer menuId);
 }
