@@ -68,12 +68,10 @@ import { ReviewComponent } from './review/review.component';
     TicketService, 
     TicketlineService, 
     DishService, 
-    ShoppingCartService
+    ShoppingCartService,
+    DishreviewService
   ],
-<<<<<<< HEAD
-  providers: [LoginService, UserApiService, TicketService, TicketlineService, DishService, DishReviewService],
-=======
->>>>>>> c7d6d1d1b47907fc0c3666e0590191b4dd139b62
+
   bootstrap: [AppComponent]
 })
 export class AppModule {}
