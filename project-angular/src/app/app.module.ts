@@ -27,6 +27,8 @@ import { TicketlineService } from './services/ticketline.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MenuComponent } from './menu/menu.component';
 import { DishService } from './services/dish.service';
+import { DishReviewService} from './services/dishreview.service';
+import { ReviewComponent } from './review/review.component';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { DishService } from './services/dish.service';
     GeneralSidenavComponent,
     ShoppingCartComponent,
     MenuComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import { DishService } from './services/dish.service';
     FormsModule,
     ClarityModule.forRoot()
   ],
-  providers: [LoginService, UserApiService, TicketService, TicketlineService, DishService],
+  providers: [LoginService, UserApiService, TicketService, TicketlineService, DishService, DishReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
